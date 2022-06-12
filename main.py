@@ -15,5 +15,18 @@ async def on_ready():
     print("RRC - Code Generator, bot is loaded & ready to use!")
     print("---------------------------------------------------")
 
+cogFiles = []
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        cogFiles.append("cogs." + filename[:-3])
+
+
+for cogFile in cogFiles:
+    try:
+        print("Loading file " + cogFile)
+        bot.load_extension(cogFile)
+    except Exception as err:
+        print(err)
+
 
 bot.run(os.getenv('TOKEN'))
