@@ -16,4 +16,4 @@ async def on_ready():
     print("---------------------------------------------------")
 
 
-bot.run(process.env.TOKEN)
+bot.run(os.getenv('TOKEN'))
