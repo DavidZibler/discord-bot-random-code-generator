@@ -10,7 +10,9 @@ import string
 codeLength = 8
 minRequiredRole = "Verified"
 generatorRole = "code-generated"
-adminCodeChannel = 984938847207034941
+# adminCodeChannel = 984938847207034941
+
+adminCodeChannel = 983717228098760794
 
 
 # ----------{ Global methods }----------
@@ -69,10 +71,10 @@ class GenerateCodeButton(Button):
         # Variables
         member = interaction.user
         role = get(interaction.message.guild.roles, name=generatorRole)
-        minRole = get(interaction.message.guild.roles, name=minRequiredRole)
+        min_role = get(interaction.message.guild.roles, name=minRequiredRole)
 
         # Check if a user already has a role
-        if minRole in member.roles:
+        if min_role in member.roles:
             if role in member.roles:
                 await interaction.response.send_message("**You already generated your code!**", delete_after=3)
             else:
