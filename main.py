@@ -7,10 +7,10 @@ from dotenv import load_dotenv
 # ----------{ Global variables }----------
 guild_id = '954021637060173884'
 
-# guild_id = '961268598800777286' # Testing
+guild_id_test = '961268598800777286' # Testing
 
 load_dotenv()   # load all the variables from the env file
-bot = commands.Bot(guild_ids=[guild_id],
+bot = commands.Bot(guild_ids=[guild_id, guild_id_test],
                    command_prefix="/",
                    intents=discord.Intents.all())
 
