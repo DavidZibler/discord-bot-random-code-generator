@@ -9,13 +9,8 @@ import string
 # ----------{ Global variables }----------
 codeLength = 8
 minRequiredRole = "Verified"
-generatorRole = "TEST"
-adminCodeChannel = 983717228098760794
-
-
-# minRequiredRole = "Verified"
-# generatorRole = "generated"
-# adminCodeChannel = 984938847207034941
+generatorRole = "code-generated"
+adminCodeChannel = 984938847207034941
 
 
 # ----------{ Global methods }----------
