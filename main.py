@@ -10,7 +10,7 @@ guild_id = '954021637060173884'
 # guild_id = '961268598800777286' # Testing
 
 load_dotenv()   # load all the variables from the env file
-bot = commands.Bot(debug_guilds=[guild_id],
+bot = commands.Bot(guild_ids=[guild_id],
                    command_prefix="/",
                    intents=discord.Intents.all())
 
