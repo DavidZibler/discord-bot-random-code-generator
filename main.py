@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 
 
 load_dotenv()   # load all the variables from the env file
-bot = commands.Bot(command_prefix="/", intents=discord.Intents.all())
+bot = commands.Bot(command_prefix="?", intents=discord.Intents.all())
 
 
 @bot.event
