@@ -1,28 +1,29 @@
 # ----------{ Imports requirements }----------
 import discord
 from discord.ext import commands
+from discord.commands import slash_command
 
 
 # ----------{ Debug class }----------
 class Debug(commands.Cog):
 
-    def __init__(self, client):
-        self.client = client
+    def __init__(self, bot):
+        self.bot = bot
 
     # ----------{ Methods }----------
     '''< Ping call >
     Check if bot responds to your first call.
     '''
-    @commands.command(name="ping", description="pong")
+    @slash_command(name="ping", description="pong")
     @commands.has_permissions(administrator=True)
     async def ping(self, ctx):
         print("pong")
-        await ctx.send("pong")
+        await ctx.respond("pong", delete_after=3)
 
     ''' < Get last messages >
     Send last 100 messages to console.
     '''
-    @commands.command()
+    @slash_command(name="get_last_messages", description="Get last 100 messages in active channel!")
     @commands.has_permissions(administrator=True)
     async def get_last_messages(self, ctx):
         print("---------------------------------------------------")
@@ -30,7 +31,7 @@ class Debug(commands.Cog):
         _channel = ctx.channel
         message_list = await _channel.history(limit=100).flatten()
 
-        await ctx.message.delete()
+        await ctx.respond('Response', delete_after=0)
 
         print("---------------------------------------------------")
         print("Messages->")
@@ -73,5 +74,5 @@ class Debug(commands.Cog):
 
 
 # ----------{ Cog export }----------
-def setup(client):
-    client.add_cog(Debug(client))
+def setup(bot):
+    bot.add_cog(Debug(bot))

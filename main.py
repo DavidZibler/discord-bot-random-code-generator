@@ -4,15 +4,22 @@ from discord.ext import commands
 import os   # default module
 from dotenv import load_dotenv
 
+# ----------{ Global variables }----------
+guild_id = '954021637060173884'
+
+# guild_id = '961268598800777286' # Testing
 
 load_dotenv()   # load all the variables from the env file
-bot = commands.Bot(command_prefix="?", intents=discord.Intents.all())
+bot = commands.Bot(debug_guilds=[guild_id],
+                   command_prefix="/",
+                   intents=discord.Intents.all())
 
 
 @bot.event
 async def on_ready():
     print("---------------------------------------------------")
     print("RRC - Code Generator, bot is loaded & ready to use!")
+    print(f"{bot.user} is online & Watching {len(bot.guilds)} servers.")
     print("---------------------------------------------------")
 
 cogFiles = []

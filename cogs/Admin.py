@@ -2,6 +2,7 @@
 import discord
 from discord.ext import commands
 from discord.ui import Button, View
+from discord.commands import slash_command
 from discord.utils import get
 import random
 import string
@@ -10,9 +11,9 @@ import string
 codeLength = 8
 minRequiredRole = "Verified"
 generatorRole = "code-generated"
-# adminCodeChannel = 984938847207034941
+adminCodeChannel = 984938847207034941
 
-adminCodeChannel = 983717228098760794
+# adminCodeChannel = 983717228098760794 # Testing
 
 
 # ----------{ Global methods }----------
@@ -30,12 +31,9 @@ class Admin(commands.Cog):
     ''' < Setup >
     Setup embed message with buttons.
     '''
-    @commands.command()
+    @slash_command(name="setup", description="Setup button panel.")
     @commands.has_permissions(administrator=True)
     async def setup(self, ctx):
-        # Delete used /command
-        await ctx.message.delete()
-
         # Create embed message
         embed = discord.Embed(
             title="📨 Private code generator",
@@ -53,7 +51,7 @@ class Admin(commands.Cog):
         view.add_item(resend_button)
 
         # Send message
-        await ctx.message.channel.send(embed=embed, view=view)
+        await ctx.respond(embed=embed, view=view)
 
     # ----------{ Error handling }----------
     @setup.error
